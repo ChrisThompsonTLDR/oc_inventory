@@ -29,7 +29,7 @@ class ControllerModuleProductInventory extends Controller {
 		    // Start output buffering (to capture stream contents)
 		    ob_start();
 
-		    fputcsv($fh, array_flip($inventory->row));
+		    fputcsv($fh, array_keys($inventory->row));
 
 		    // Loop over the * to export
 		    foreach($inventory->rows as $row) {
