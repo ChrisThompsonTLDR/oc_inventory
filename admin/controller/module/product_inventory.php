@@ -8,7 +8,7 @@ class ControllerModuleProductInventory extends Controller {
 				pd.name,
 				p.model,
 				p.price,
-				p.location AS `cost`,
+				p.cost,
 				p.status,
 				p.quantity,
 				GROUP_CONCAT(cd.name) AS `categories`
