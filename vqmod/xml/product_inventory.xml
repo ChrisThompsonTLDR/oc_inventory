@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Product Inventory v2.0.0.x, v2.0.1.x, v2.0.2.x</id>
+	<version>0.1</version>
+	<vqmver>2.5.1</vqmver>
+	<author>Chris Thompson</author>
+	<email>christhompsontldr@gmail.com</email>
+	<website>http://www.christhompsontldr.com</website>
+
+	<file name="admin/language/*/common/header.php">
+        <operation>
+            <search position="after"><![CDATA[
+<?php
+            ]]></search>
+            <add><![CDATA[
+$_['text_report_product_inventory']    		= 'Inventory Export';
+            ]]></add>
+        </operation>
+	</file>
+
+
+	<file name="admin/controller/common/menu.php">
+        <operation>
+            <search position="after"><![CDATA[
+$data['text_report_product_purchased'] = $this->language->get('text_report_product_purchased');
+            ]]></search>
+            <add><![CDATA[
+$data['text_report_product_inventory'] = $this->language->get('text_report_product_inventory');
+            ]]></add>
+        </operation>
+        <operation>
+            <search position="after"><![CDATA[
+$data['report_product_purchased'] = $this->url->link('report/product_purchased', 'token=' . $this->session->data['token'], 'SSL');
+            ]]></search>
+            <add><![CDATA[
+$data['report_product_inventory'] = $this->url->link('module/product_inventory', 'token=' . $this->session->data['token'], 'SSL');
+            ]]></add>
+        </operation>
+	</file>
+
+
+	<file name="admin/view/template/common/menu.tpl">
+        <operation>
+            <search position="after"><![CDATA[
+<li><a href="<?php echo $report_product_purchased; ?>"><?php echo $text_report_product_purchased; ?></a></li>
+            ]]></search>
+            <add><![CDATA[
+<li style="border-top:1px dashed #888;"><a href="<?php echo $report_product_inventory; ?>"><?php echo $text_report_product_inventory; ?></a></li>
+            ]]></add>
+        </operation>
+    </file>
+</modification>
